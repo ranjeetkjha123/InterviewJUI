@@ -385,3 +385,43 @@ After async await
 1) routing 
 2) Promise
 3) 
+
+
+let data = [
+    [
+        { firstname: "h", lastname: "kumar" },
+        { firstname: "j", lastname: "kumar" },
+        { firstname: "k", lastname: "kumar" }
+    ],
+    { firstname: "h", lastname: "kumar" },
+    { firstname: "j", lastname: "kumar" },
+    { firstname: "k", lastname: "kumar" }
+];
+
+let fullNames = [];
+
+for (let item of data) {
+    if (Array.isArray(item)) {
+        for (let obj of item) {
+            fullNames.push(obj.firstname + ' ' + obj.lastname);
+        }
+    } else {
+        fullNames.push(item.firstname + ' ' + item.lastname);
+    }
+}
+
+console.log(fullNames); // data.flat()
+
+const newarr = data.map((items)=>{
+
+let temp = items;
+    if(Array.isArray(temp)){ 
+        temp = temp.map((val)=>{
+            return val.firstname+val.lastname
+        })
+    } else{
+        temp = temp.firstname+temp.lastname
+    }
+     return temp
+}).flat()
+//
